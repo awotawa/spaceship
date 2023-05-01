@@ -48,3 +48,16 @@ app.post("/astronauts", function (req, res) {
   astronauts.push(newAstronaut);
   res.status(200).json(newAstronaut);
 });
+
+app.put("/astronauts/:id", function (req, res) {
+  console.log(req.body);
+  const id = parseInt(req.params.id);
+  let astronaut = astronauts.find((astronaut) => astronaut.id === id);
+  const editedAstronaut = { ...astronaut, ...req.body };
+  astronaut.firstName = editedAstronaut.firstName;
+  astronaut.lastName = editedAstronaut.lastName;
+  astronaut.age = editedAstronaut.age;
+  astronaut.nationality = editedAstronaut.nationality;
+  res.status(200).json(astronaut);
+});
+
