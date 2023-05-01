@@ -24,3 +24,27 @@ app.get("/astronauts/:id", function (req, res) {
     res.status(200).json(astronaut);
   }
 });
+
+/*
+Use this if you want to use urlencoded format
+app.use(
+  express.urlencoded({
+    extended: true,
+  })
+);
+*/
+
+// Use this if you want to use json format
+app.use(express.json());
+
+app.post("/astronauts", function (req, res) {
+  const newAstronaut = {
+    id: req.body.id,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    age: req.body.age,
+    nationality: req.body.nationality,
+  };
+  astronauts.push(newAstronaut);
+  res.status(200).json(newAstronaut);
+});
