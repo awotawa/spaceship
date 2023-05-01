@@ -61,3 +61,13 @@ app.put("/astronauts/:id", function (req, res) {
   res.status(200).json(astronaut);
 });
 
+app.delete("/astronauts/:id", function (req, res) {
+  const id = parseInt(req.params.id);
+  let astronaut = astronauts.find((astronaut) => astronaut.id === id);
+  if (astronaut === undefined) {
+    res.status(404).json("The requested astronaut was not found.");
+  } else {
+    astronauts.splice(astronauts.indexOf(astronaut), 1);
+    res.status(200).json(astronauts);
+  }
+});
