@@ -3,7 +3,7 @@ const app = express();
 
 const astronauts = require("./astronauts.json");
 
-const port = 3000;
+const port = 1024;
 
 app.listen(port, () => {
   console.log(`Spaceship app listening at http://localhost:${port}`);
